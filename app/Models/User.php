@@ -37,7 +37,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * relation UserAddress Model
+     * relation UserAddress model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
