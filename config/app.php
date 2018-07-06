@@ -104,6 +104,8 @@ return [
     |
     */
 
+    'faker_locale' => 'zh_CN',
+
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
