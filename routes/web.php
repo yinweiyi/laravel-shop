@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
         //已收藏商品列表
         Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+        //添加至购入车
+        Route::post('cart', 'CartController@add')->name('cart.add');
     });
     // 结束
 });
