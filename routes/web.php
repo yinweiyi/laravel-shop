@@ -33,6 +33,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');
         //收货地址删除
         Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
+        //商品列表
+        Route::redirect('/', '/products')->name('root');
+        //商品列表
+        Route::get('products', 'ProductsController@index')->name('products.index');
     });
     // 结束
 });
