@@ -89,15 +89,16 @@ class OrdersController extends Controller
 
             // 禁用创建按钮，后台不需要创建订单
             $grid->disableCreateButton();
-            $grid->actions(function ($actions) {
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
                 // 禁用删除和编辑按钮
                 $actions->disableDelete();
                 $actions->disableEdit();
+                $actions->append('<a class="btn btn-xs btn-primary" href="'.route('admin.orders.show', [$actions->getKey()]).'">查看</a>');
             });
 
-            $grid->tools(function ($tools) {
+            $grid->tools(function (Grid\Tools $tools) {
                 // 禁用批量删除按钮
-                $tools->batch(function ($batch) {
+                $tools->batch(function (Grid\Tools\BatchActions $batch) {
                     $batch->disableDelete();
                 });
             });
@@ -117,6 +118,21 @@ class OrdersController extends Controller
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
+        });
+    }
+
+    /**
+     * 订单详情
+     *
+     * @param Order $order
+     * @return Content
+     */
+    public function show(Order $order)
+    {
+        return Admin::content(function (Content $content) use ($order) {
+            $content->header('查看订单');
+            // body 方法可以接受 Laravel 的视图作为参数
+            $content->body(view('admin.orders.show', ['order' => $order]));
         });
     }
 }
