@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function() {
 //支付宝后端回调
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 //微信后端回调
-Route::post('payment/wechat/notify', 'PaymentController@wechatNotify')->name('payment.wechat.notify');
+    Route::post('payment/wechat/notify', 'PaymentController@wechatNotify')->name('payment.wechat.notify');
 
 //商品详情页
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
