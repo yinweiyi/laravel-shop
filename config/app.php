@@ -138,6 +138,8 @@ return [
     |
     */
 
+    'order_ttl' => 1800,
+
     'providers' => [
 
         /*
