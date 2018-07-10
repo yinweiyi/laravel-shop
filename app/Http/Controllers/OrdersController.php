@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
 
+    /**
+     * 订单列表
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request) {
         $orders = Order::query()
             // 使用 with 方法预加载，避免N + 1问题
@@ -23,6 +29,21 @@ class OrdersController extends Controller
             ->paginate();
         return view('orders.index', ['orders' => $orders]);
     }
+
+    /**
+     * 订单详情
+     *
+     * @param Order $order
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show(Order $order, Request $request)
+    {
+        $this->authorize('own', $order);
+        return view('orders.show', ['order' => $order->load(['items.productSku', 'items.product'])]);
+    }
+
     /**
      * 提交订单
      *
