@@ -57,16 +57,15 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('orders', 'OrdersController@index')->name('orders.index');
         //订单详情页
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+        //支付宝支付
+        Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
+        //支付宝前端回调
+        Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
     });
     // 结束
 });
-Route::get('alipay', function() {
-    return app('alipay')->web([
-        'out_trade_no' => time(),
-        'total_amount' => '1',
-        'subject' => 'test subject - 测试',
-    ]);
-});
+//支付宝后端回调
+Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 
 //商品详情页
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');

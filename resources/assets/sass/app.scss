@@ -1,16 +1,13 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 // 通用样式
 body {
-  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
+  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
 /* 顶部导航 */
@@ -27,8 +24,9 @@ body {
 /* 底部样式 */
 html {
   position: relative;
-  min-height: 100% ;
+  min-height: 100%;
 }
+
 body {
   margin-bottom: 60px;
 }
@@ -36,7 +34,7 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100% ;
+  width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #000;
@@ -55,6 +53,7 @@ body {
     }
   }
 }
+
 //商品列表
 .products-index-page, .products-favorites-page {
   .pagination {
@@ -96,7 +95,7 @@ body {
             color: #38b;
             font-weight: bold;
           }
-          &>div {
+          & > div {
             &:first-child {
               border-right: 1px solid #eee;
             }
@@ -115,6 +114,7 @@ body {
     border-bottom: 1px solid #eee;
   }
 }
+
 .products-show-page {
   .cover {
     width: 100%;
@@ -159,8 +159,8 @@ body {
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    &>div {
-      &.sold_count,&.review_count {
+    & > div {
+      &.sold_count, &.review_count {
         border-right: 1px dotted #c9c9c9;
       }
       width: 33%;
@@ -173,7 +173,7 @@ body {
     }
   }
   .skus {
-    &>label {
+    & > label {
       color: #999;
       font-size: 12px;
       padding: 0 10px 0 10px;
@@ -220,7 +220,7 @@ body {
     padding-left: 44px;
   }
 
-  .product-detail  {
+  .product-detail {
     .nav.nav-tabs > li > a {
       border-radius: 0 !important;
     }
@@ -231,6 +231,7 @@ body {
     }
   }
 }
+
 .cart-index-page {
   .product_list {
     .preview {
@@ -276,6 +277,7 @@ body {
     }
   }
 }
+
 .orders-index-page {
   .list-group-item {
     font-size: 12px;
@@ -320,6 +322,7 @@ body {
     }
   }
 }
+
 .orders-show-page {
   font-size: 12px;
   .vertical-middle {
@@ -374,7 +377,7 @@ body {
   }
   .order-summary {
     width: 50%;
-    font-family: Verdana,Tahoma,Helvetica,Arial;
+    font-family: Verdana, Tahoma, Helvetica, Arial;
     .total-amount {
       font-weight: bolder;
       font-size: 14px;
@@ -384,5 +387,9 @@ body {
       width: 150px;
       padding-right: 20px;
     }
+  }
+  .payment-buttons {
+    margin-top: 10px;
+    padding-right: 10px;
   }
 }
