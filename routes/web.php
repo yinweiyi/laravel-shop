@@ -59,12 +59,18 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
         //订单确认收货
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
+        //订单评价页
+        Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
+        //处理订单评价
+        Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
         //支付宝支付
         Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
         //支付宝前端回调
         Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
         //微信支付
         Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat');
+
+
     });
     // 结束
 });
