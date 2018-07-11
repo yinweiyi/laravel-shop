@@ -98,6 +98,16 @@ class Order extends Model
     }
 
     /**
+     * 关联优惠码
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function couponCode()
+    {
+        return $this->belongsTo(CouponCode::class);
+    }
+
+    /**
      * 订单流水号
      *
      * @return bool|string
