@@ -71,7 +71,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat');
         //退款申请
         Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
-
+        //退款回调路由
+        Route::post('payment/wechat/refund_notify', 'PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
     });
     // 结束
 });
