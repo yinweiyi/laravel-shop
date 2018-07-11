@@ -16,8 +16,8 @@
                             <div class="sales_and_reviews">
                                 <div class="sold_count">累计销量 <span class="count">{{ $product->sold_count }}</span></div>
                                 <div class="review_count">累计评价 <span class="count">{{ $product->review_count }}</span></div>
-                                <div class="rating" title="评分 {{ $product->rating }}">评分 <span
-                                            class="count">{{ str_repeat('★', floor($product->rating)) }}{{ str_repeat('☆', 5 - floor($product->rating)) }}</span>
+                                <div class="rating" title="评分 {{ $product->rating }}">评分
+                                    <span class="count">{{ str_repeat('★', floor($product->rating)) }}{{ str_repeat('☆', 5 - floor($product->rating)) }}</span>
                                 </div>
                             </div>
                             <div class="skus">
@@ -60,6 +60,30 @@
                                 {!! $product->description !!}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="product-reviews-tab">
+                                <!-- 评论列表开始 -->
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <td>用户</td>
+                                        <td>商品</td>
+                                        <td>评分</td>
+                                        <td>评价</td>
+                                        <td>时间</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($reviews as $review)
+                                        <tr>
+                                            <td>{{ $review->order->user->name }}</td>
+                                            <td>{{ $review->productSku->title }}</td>
+                                            <td>{{ str_repeat('★', $review->rating) }}{{ str_repeat('☆', 5 - $review->rating) }}</td>
+                                            <td>{{ $review->review }}</td>
+                                            <td>{{ $review->reviewed_at->format('Y-m-d H:i') }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <!-- 评论列表结束 -->
                             </div>
                         </div>
                     </div>
@@ -67,32 +91,7 @@
             </div>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="product-reviews-tab">
-        <!-- 评论列表开始 -->
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <td>用户</td>
-                <td>商品</td>
-                <td>评分</td>
-                <td>评价</td>
-                <td>时间</td>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($reviews as $review)
-                <tr>
-                    <td>{{ $review->order->user->name }}</td>
-                    <td>{{ $review->productSku->title }}</td>
-                    <td>{{ str_repeat('★', $review->rating) }}{{ str_repeat('☆', 5 - $review->rating) }}</td>
-                    <td>{{ $review->review }}</td>
-                    <td>{{ $review->reviewed_at->format('Y-m-d H:i') }}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <!-- 评论列表结束 -->
-    </div>
+
 @endsection
 @section('scriptsAfterJs')
     <script>
