@@ -101,7 +101,13 @@
                                     @endif
                                 </div>
                             </div>
-                            <!-- 支付按钮开始 -->
+                            @if(isset($order->extra['refund_disagree_reason']))
+                                <div>
+                                    <span>拒绝退款理由：</span>
+                                    <div class="value">{{ $order->extra['refund_disagree_reason'] }}</div>
+                                </div>
+                            @endif
+                        <!-- 支付按钮开始 -->
                             @if(!$order->paid_at && !$order->closed)
                                 <div class="payment-buttons">
                                     <a class="btn btn-primary btn-sm" href="{{ route('payment.alipay', ['order' => $order->id]) }}">支付宝支付</a>
@@ -170,7 +176,7 @@
                     content: "input",
                 }).then(function (input) {
                     // 当用户点击 swal 弹出框上的按钮时触发这个函数
-                    if(!input) {
+                    if (!input) {
                         swal('退款理由不可空', '', 'error');
                         return;
                     }
